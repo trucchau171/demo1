@@ -29,6 +29,8 @@
   var sceneListToggleElement = document.querySelector('#sceneListToggle');
   var autorotateToggleElement = document.querySelector('#autorotateToggle');
   var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
+  
+  var location = document.querySelector('#location');
 
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
@@ -366,6 +368,24 @@
         event.stopPropagation();
       });
     }
+  }
+
+
+// Map
+
+  const locationModal = document.querySelector('.location-modal');
+  const locationClose = document.querySelector('.location-close');
+  const locationIcon = document.querySelector('.location-icon');
+  function showLocation() {
+    locationModal.classList.add('visible');
+  }
+  function toggleLocation() {
+    locationModal.classList.toggle('visible');
+  }
+  locationIcon.addEventListener('click', showLocation);
+  locationClose.addEventListener('click', toggleLocation);
+  if (locationModal.classList.contains('visible')) {
+    stopTouchAndScrollEventPropagation(locationModal);
   }
 
   function findSceneById(id) {
